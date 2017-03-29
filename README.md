@@ -5,4 +5,7 @@
 --> 课程地址[Coursera](https://www.coursera.org/learn/machine-learning/home/welcome)</br>
 --> 学习进度：第7周 SVM 支持向量机</br>
 ## 机器学习练习作业</br>
---> ex2 ex3 ex4 ex5
+--> ex2 线性回归 </br>
+--> ex3 逻辑回归 </br>
+--> ex4 手写数字识别</br>
+--> ex5 神经网络 </br>
