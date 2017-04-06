@@ -6,6 +6,8 @@
 --> 学习进度：第7周 SVM 支持向量机</br>
 ## 学习 斯坦福 机器学习 课程</br>
 有相关课件材料以及作业习题</br>
+## 斯坦福机器学习课程视频资料</br>
+百度云[链接: https://pan.baidu.com/s/1kUCSkkv ](https://pan.baidu.com/s/1kUCSkkv) 密码: jiej</br>
 ## 机器学习练习作业</br>
 --> ex2 线性回归 </br>
 --> ex3 逻辑回归 </br>
