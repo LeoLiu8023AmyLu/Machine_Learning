@@ -14,7 +14,7 @@ graph LR;
 A(Training Set) --> B(Learning Algorithm);
 B --> D(h)
 C[input X] --> D
-D --> E((output Y)) 
+D --> E(output Y) 
 ```
 
 ### Linear regression 线性回归
@@ -31,7 +31,7 @@ D --> E((output Y))
 * 单变量回归需要优化的数学表达式 : 
   $$ \underset{\theta_0 \theta_1}{minimize } J(\theta_0,\theta_1)=\dfrac{1}{2m} \sum_{i =1}^{m} (h_{\theta}(x^{(i)})-y^{(i)})^2 $$
 
-### 单变量线性回归 总结
+### 单变量线性回归小结
 | 参数 | 说明 | 表达式|
 |:--:|:--:|:--:|
 |Hypothesis|假设函数|$h_{\theta}(x) = \theta_0 + \theta_1 x$|
@@ -43,4 +43,6 @@ D --> E((output Y))
     > $h_\theta(x)$ 是关于 $x$ 的函数
 * $J(\theta_0,\theta_1)$ function of parameter $\theta_0,\theta_1$  
     > $J(\theta_0,\theta_1)$ 是关于 $\theta_0,\theta_1$ 的函数
+### 求最佳拟合函数
+通过不断调整 $\theta_0,\theta_1$ 使得 $J(\theta_0,\theta_1)$ 最小，从而得到最合适的参数 $\theta_0,\theta_1$，使得函数与数据拟合。换句话说理解为与数据误差最小。
 
