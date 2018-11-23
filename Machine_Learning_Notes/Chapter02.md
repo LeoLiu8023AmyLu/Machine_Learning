@@ -75,7 +75,7 @@ D --> E[output Y]
 1. `:=` assignment-operator 赋值操作符; 
 2. `=` 判断是否相等
 3. $\alpha$ learning rate 学习率，控制梯度下降的参数
-4. **必须同时计算参数 temp 后再更新参数** $\theta_0,\theta_1$ ...
+4. **必须同时计算参数 temp 后再更新参数** $\theta_0,\theta_1$ ... 否则不是规范的梯度下降算法，引起更新不同时带来的偏差
 
 ### **Gradient descent** 算法更新原理
 假设 $J(\theta_1) (\theta_1 \in \real)$
@@ -87,8 +87,8 @@ D --> E[output Y]
 * $\dfrac{\partial}{\partial\theta_1} J(\theta_1) \le 0$ ,情况为: $\theta_1 := \theta_1 - \alpha$ * (negative number 负数)
 ---
 #### $\alpha$ 取值对 **Gradient descent** 算法的影响 
-+ 如果 $\alpha$ 太小，梯度下降算法运行到 **cost fuction** 最小值会很慢
-+ 如果 $\alpha$ 太小，梯度下降算法会在接近 **cost fuction** 最小值时，跳过最小值，从而导致无法收敛
++ 如果 $\alpha$ 太 **小**，梯度下降算法运行到 **cost fuction** 最小值会很慢
++ 如果 $\alpha$ 太 **大**，梯度下降算法会在接近 **cost fuction** 最小值时，跳过最小值，从而导致无法收敛
 + 如果有合适的 $\theta_1$ 使 $J(\theta_1)$ 刚好处于 **local optima** 局部最优解处，则 $\dfrac{\partial}{\partial\theta_1} J(\theta_1) = 0$ ， 迭代更新将停止。
     > 更新公示此时为 : $\theta_1 := \theta_1 - \alpha * 0 := \theta_1$ 即无更新
 
