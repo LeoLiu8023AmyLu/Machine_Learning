@@ -320,3 +320,54 @@ $\ \ \ \ \theta_j := \theta_j - \alpha\dfrac{\partial}{\partial\theta_j}J(\theta
 - $\alpha$ 可以尝试 $...,0.001,0.01,0.1,1,...$ (一般 **10** 倍增长,可采用二分法逐步找到合适的学习率$\alpha$)
   
 ## 特征 与 多项式回归
+1. 特征选取
+    举例: Housing prices prediction
+    $h_\theta(x)=\theta_0 + \theta_1 \times frontage + \theta_2 \times depth$
+    定义新的特征 $area = frontage \times depth$ 则假设变为：
+    $h_\theta(x)=\theta_0 + \theta_1 \times area$
+    > 选取可是的特征可以更好的训练模型
+
+2. 多项式回归 Polynomial regression
+    为了更好的拟合(曲线)
+    $h_\theta(x)=\theta_0 + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_3$
+    定义：
+    * $x_1 = (size) $
+    * $x_2 = (size)^2 $
+    * $x_3 = (size)^3 $
+    则：
+    $h_\theta(x)=\theta_0 + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_3 = \theta_0 + \theta_1 (size) + \theta_2 (size)^2 + \theta_3 (size)^3$
+    > 如果采用这种方式，特征缩放将不需要考虑
+
+## 正规方程(理论方法，一般不使用)
+Normal equation : Method to solve for $\theta$ analytically.
+> 正规方程 : 一种自动的方法求解参数 $\theta$
+
+* Intuition 直观来看 : If 1D ( $\theta \in \Re$ )  若只有一个参数
+    $J(\theta) = a\theta^2 + b\theta +c$ ，求解 $\dfrac{\partial}{\partial\theta}J(\theta)$ 导数为零时 $\theta$ 的值
+* Normally 实际中 : $\theta \in \Re^{n+1}$
+    $J(\theta_0,\theta_1,...,\theta_n) = \dfrac{1}{2m} \sum^m_{i=1}(h_\theta(x^{(i)})-y^{(i)})^2$
+    $\dfrac{\partial}{\partial\theta}J(\theta) = ... = 0$ ( for every $j$ )
+    求出 $\theta_0,\theta_1,...,\theta_n$
+
+> 举例: $m=4$
+> | $\\x_0$ | Size($feet^2$)$\\x_1$ | Number of bedrooms $\\x_2$ | Number of floors $\\x_3$ | Age of home(years) $\\x_4$ | Price($\$$1000) $\\y$ |
+> | :-----: | :-------------------: | :------------------------: | :----------------------: | :------------------------: |:--:|
+> | 1 |2104|5|1|45|460|
+> | 1 |1416|3|2|40|232|
+> | 1 |1534|3|2|30|315|
+> | 1 |852|2|1|36|178|
+> 转化为矩阵：
+> $X = \begin{bmatrix}1&2104&5&1&45\\1&1416&3&2&40\\1&1534&3&2&30\\1&852&2&1&36\end{bmatrix}$ , $y=\begin{bmatrix}460\\232\\315\\178\end{bmatrix}$ , 参数为: $\theta = (X^TX)^{-1}X^Ty$  
+
+* General Case 通常情况下：
+    $m$ examples $(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)})$; $n$ features.  $m$ 个样本 $(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)})$ ; $n$ 个特征。
+    $x^{(i)} = \begin{bmatrix}x_0^{(i)}\\x_1^{(i)}\\x_2^{(i)}\\.\\.\\.\\x_n^{(i)}\end{bmatrix} \in \Re^{n+1}$
+* Design Matrix 设计矩阵
+    $X = \begin{bmatrix}-(x^{(1)})^T-\\-(x^{(2)})^T-\\-(x^{(3)})^T-\\.\\.\\.\\-(x^{(m)})^T-\end{bmatrix}$ 这个矩阵维度为 $m \times (n+1)$
+    
+    > **举例**: 如果 $x^{(i)} = \begin{bmatrix}1\\x_1^{(i)}\end{bmatrix}$ ， 设计矩阵为 : $X=\begin{bmatrix}1&x_1^{(1)}\\1&x_2^{(1)}\\1&x_3^{(1)}\\.&.\\.&.\\.&.\\1&x_m^{(1)}\end{bmatrix}$ ， $y=\begin{bmatrix}y^{(1)}\\y^{(2)}\\y^{(3)}\\.\\.\\.\\y^{(m)}\end{bmatrix}$ ， 因此 $\theta = (X^TX)^{-1}X^Ty$
+* 说明
+    > $\theta = (X^TX)^{-1}X^Ty$ , $(X^TX)^{-1}$ is inverse of matrix $X^TX$ ，$(X^TX)^{-1}$ 矩阵是 $X^TX$ 矩阵的逆。
+
+### 对比总结
+$m$ training examples, $n$ features. $m$ 个训练样本 $n$ 个特征
