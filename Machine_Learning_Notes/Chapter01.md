@@ -8,14 +8,16 @@
 
 ## 机器学习的定义
 * Arthur Samuel (1959) 定义:
-    > Field of study that gives computers the ability to learn without being explicitly programmed.  
+    > </br>Field of study that gives computers the ability to learn without being explicitly programmed.  
     >   
     > 机器学习: 在没有明确设置的情况下使计算机具有学习能力的研究领域。
+    > </br>
 
 * Tom Mitchell (1988) 定义:
-    > A computer program is said to learn from experience **E** with respect to some task **T** and some performance measured by **P**, if its performance on **T**, as measured by **P**, improves with experience **E**.
+    > </br>A computer program is said to learn from experience **E** with respect to some task **T** and some performance measured by **P**, if its performance on **T**, as measured by **P**, improves with experience **E**.
     >    
     > 计算机程序从经验 **E** 中学习, 解决某一任务 **T** ,进行某一性能度量 **P** ,通过 **P** 测定在 **T** 上的表现因经验 **E** 而提高。
+    > </br>
 
 * 机器学习主要算法
     * Supervised learning 监督学习

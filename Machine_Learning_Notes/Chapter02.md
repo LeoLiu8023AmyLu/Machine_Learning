@@ -19,14 +19,16 @@ D --> E[output Y]
 
 ### Linear regression 线性回归
 * Univariate linear regression 单变量线性回归
-    > $h_{\theta}(x) = \theta_0 + \theta_1 x$ 
+    > </br>$h_{\theta}(x) = \theta_0 + \theta_1 x$ 
     > $\theta_0,\theta_1$ is Parameters 参数（需要优化的部分）
     > 为了优化参数 $\theta_0$ 与 $\theta_1$,我们希望 $\underset{\theta_0 \theta_1}{minimize}\dfrac{1}{2m} \sum_{i =1}^{m} (h_{\theta}(x)-y)^2$
+    > </br>
 
 ### Cost function 误差代价函数 
 * Cost function 误差代价函数
-    > 数学表达式 : $J(\theta_0,\theta_1)=\dfrac{1}{2m} \sum_{i =1}^{m} (h_{\theta}(x^{(i)})-y^{(i)})^2$  
+    > </br>数学表达式 : $J(\theta_0,\theta_1)=\dfrac{1}{2m} \sum_{i =1}^{m} (h_{\theta}(x^{(i)})-y^{(i)})^2$  
     > 称之 **Square error cost function** 平方误差代价函数
+    > </br>
 
 * 单变量回归需要优化的数学表达式 : 
   $$ \underset{\theta_0 \theta_1}{minimize } J(\theta_0,\theta_1)=\dfrac{1}{2m} \sum_{i =1}^{m} (h_{\theta}(x^{(i)})-y^{(i)})^2 $$
@@ -39,10 +41,10 @@ D --> E[output Y]
 |Cost Function|误差代价函数|$J(\theta_0,\theta_1)=\dfrac{1}{2m} \sum_{i =1}^{m} (h_{\theta}(x^{(i)})-y^{(i)})^2$|
 |Goal|目标|$\underset{\theta_0 \theta_1}{minimize } J(\theta_0,\theta_1)$|
 
-* $h_\theta(x)$ for fixed $\theta_0,\theta_1$, this is a function of $x$  
-    > $h_\theta(x)$ 是关于 $x$ 的函数
-* $J(\theta_0,\theta_1)$ function of parameter $\theta_0,\theta_1$  
-    > $J(\theta_0,\theta_1)$ 是关于 $\theta_0,\theta_1$ 的函数
+* $h_\theta(x)$ for fixed $\theta_0,\theta_1$, this is a function of $x$
+$h_\theta(x)$ 是关于 $x$ 的函数
+* $J(\theta_0,\theta_1)$ function of parameter $\theta_0,\theta_1$ 
+$J(\theta_0,\theta_1)$ 是关于 $\theta_0,\theta_1$ 的函数
 ### 求最佳拟合函数
 通过不断调整 $\theta_0,\theta_1$ 使得 $J(\theta_0,\theta_1)$ 最小，从而得到最合适的参数 $\theta_0,\theta_1$，使得函数与数据拟合。换句话说理解为与数据误差最小。
 
@@ -60,16 +62,20 @@ D --> E[output Y]
 
 ### **Gradient descent algorithm** 算法原理
 需要构建一种使 $J(\theta_0,\theta_1)$ 下降到最小值的算法：Gradient descent 梯度下降算法 
-> repeat until convergence 
+> </br>repeat until convergence 
 > {
 > $\theta_j := \theta_j - \alpha \dfrac{\partial}{\partial\theta_j} J(\theta_0,\theta_1)$ (for $j=0$ and $j=1$)
 > }
 > 
 > Correct : Simultaneous update
+> 
 > `temp0` : = $\theta_0 - \alpha \dfrac{\partial}{\partial\theta_0} J(\theta_0,\theta_1)$
+> 
 > `temp1` : = $\theta_1 - \alpha \dfrac{\partial}{\partial\theta_1} J(\theta_0,\theta_1)$
+> 
 > $\theta_0$ := `temp0`
 > $\theta_1$ := `temp1`
+> </br>
 
 特别需要注意:
 1. `:=` assignment-operator 赋值操作符; 
@@ -93,21 +99,23 @@ D --> E[output Y]
     > 更新公示此时为 : $\theta_1 := \theta_1 - \alpha * 0 := \theta_1$ 即无更新
 
 Gradient descent can converge to a local minimum, even with the learning rate $\alpha$ fixed.
-> 梯度下降法 即使在不合适的学习率 $\alpha$ 下，也会收敛到局部最小点。
+> </br>梯度下降法 即使在不合适的学习率 $\alpha$ 下，也会收敛到局部最小点。
 > 梯度下降法越接近局部最小点，微分项 $\dfrac{\partial}{\partial\theta_1} J(\theta_1)$ 越小，即更新幅度越小
+> </br>
 
 ###  微分项推到过程
 假设 $h_{\theta}(x) = \theta_0 + \theta_1 x$ 
 
-$\dfrac{\partial}{\partial\theta_j} J(\theta_0.\theta_1) = \dfrac{\partial}{\partial\theta_j} · \dfrac{1}{2m} \sum_{i =1}^{m} (h_{\theta}(x^{(i)})-y^{(i)})^2$ 
-$=\dfrac{\partial}{\partial\theta_j} · \dfrac{1}{2m} \sum_{i =1}^{m} (\theta_0 + \theta_1 x^{(i)}-y^{(i)})^2$
+$\dfrac{\partial}{\partial\theta_j} J(\theta_0.\theta_1) = \dfrac{\partial}{\partial\theta_j} · \dfrac{1}{2m} \sum_{i =1}^{m} (h_{\theta}(x^{(i)})-y^{(i)})^2 =\dfrac{\partial}{\partial\theta_j} · \dfrac{1}{2m} \sum_{i =1}^{m} (\theta_0 + \theta_1 x^{(i)}-y^{(i)})^2$
 
 ---
 * $j=0$ 时，则 $\theta_j = \theta_0$
-    > $\dfrac{\partial}{\partial\theta_0} J(\theta_0.\theta_1) = \dfrac{1}{m} \sum_{i=1}^{m} (h_{\theta}(x^{(i)})-y^{(i)})$
+    > </br>$\dfrac{\partial}{\partial\theta_0} J(\theta_0.\theta_1) = \dfrac{1}{m} \sum_{i=1}^{m} (h_{\theta}(x^{(i)})-y^{(i)})$
+    > </br>
 
 * $j=1$ 时，则 $\theta_j = \theta_1$
-    > $\dfrac{\partial}{\partial\theta_1} J(\theta_0.\theta_1) = \dfrac{1}{m} \sum_{i=1}^{m} (h_{\theta}(x^{(i)})-y^{(i)}) · x^{(i)}$
+    > </br>$\dfrac{\partial}{\partial\theta_1} J(\theta_0.\theta_1) = \dfrac{1}{m} \sum_{i=1}^{m} (h_{\theta}(x^{(i)})-y^{(i)}) · x^{(i)}$
+    > </br>
 
 将上述推到结果代入到梯度下降算法中：
 > repeat until convergence 
