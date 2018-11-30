@@ -389,9 +389,18 @@ Normal equation : Method to solve for $\theta$ analytically.
 ### 对比总结
 
 $m$ training examples, $n$ features. $m$ 个训练样本 $n$ 个特征
-| Gradient Descent                                                        | Normal Equation                                                                                                      |
-| :---------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------: |
-| Need to choose $\alpha$</br>需要选择学习率 $\alpha$                     | No need to choose $\alpha$</br>不需要选择学习率 $\alpha$                                                             |
-| Needs many iterations</br>需要很多次迭代                                | Don't need to iterate</br>不需要迭代                                                                                 |
-| Works well even when $n$ is large</br>即使特征 $n$ 很多也可以很好的工作 | Need to compute $(X^TX)^{-1}$, Slow if $n$ is very large</br>需要计算 $(X^TX)^{-1}$, 如果特征 $n$ 很大，计算将会很慢 |
+| Gradient Descent                                                        | Normal Equation                                                                                                                           |
+| :---------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: |
+| Need to choose $\alpha$</br>需要选择学习率 $\alpha$                     | No need to choose $\alpha$</br>不需要选择学习率 $\alpha$                                                                                  |
+| Needs many iterations</br>需要很多次迭代                                | Don't need to iterate</br>不需要迭代                                                                                                      |
+| Works well even when $n$ is large</br>即使特征 $n$ 很多也可以很好的工作 | Need to compute $(X^TX)^{-1}$, Slow if $n$ is very large</br>需要计算 $(X^TX)^{-1}$, 如果特征 $n$ 很大，计算将会很慢</br>复杂度为$O(n^3)$ |
 
+> $n < 10000$ 建议使用 **正规方程** (线性回归)
+> $n \geqslant 10000$ 建议使用 **梯度下降法**
+
+## 正规方程 (矩阵不可逆的解法)
+正规方程  $\theta = (X^TX)^{-1}X^Ty$ ， 如果 $X^TX$ 不可逆
+1. Redundant features 多余的特征  (linearly dependent)
+E.g. $x_1$ = size in $feet^2$ , $x_2$ = size in $m^2$ (第二个是多余的)
+2. Too many features 过多的特征 (e.g. $m \leqslant n$).
+    - Delete some features,or use regularization.删除一些特征，或者使用 **正则化**。
