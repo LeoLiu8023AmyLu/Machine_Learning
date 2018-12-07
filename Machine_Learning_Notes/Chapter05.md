@@ -389,7 +389,7 @@ Normal equation : Method to solve for $\theta$ analytically.
 ### 对比总结
 
 $m$ training examples, $n$ features. $m$ 个训练样本 $n$ 个特征
-| Gradient Descent                                                        | Normal Equation                                                                                                                           |
+| Gradient Descent</br>梯度下降                                           | Normal Equation</br>正规方程                                                                                                              |
 | :---------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: |
 | Need to choose $\alpha$</br>需要选择学习率 $\alpha$                     | No need to choose $\alpha$</br>不需要选择学习率 $\alpha$                                                                                  |
 | Needs many iterations</br>需要很多次迭代                                | Don't need to iterate</br>不需要迭代                                                                                                      |

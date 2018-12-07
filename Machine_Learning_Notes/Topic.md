@@ -4,7 +4,7 @@
 3. [线性回归回顾](./Chapter03.md)
 4. 配置 Octive 笔记省略 (可自己上网查看安装教程)
 5. [多变量线性回归](./Chapter05.md)
-6. [Octave/Matlab 教程](./Chapter06.md)
+6. Octave/Matlab 教程 (可自己上网查看安装教程)
 7. [Logistic 回归](./Chapter07.md)
 8. [正则化](./Chapter08.md)
 9. [神经网络学习](./Chapter09.md)
