@@ -145,3 +145,7 @@ $P(y=0|x;\theta) + P(y=1|x;\theta)=1$ ,可以推导出 : $P(y=0|x;\theta) = 1 - 
 
 ## 决策边界
 Logistic regression 逻辑回归 : $h_{\theta}(x) = g(\theta^Tx)$ ，其中 $g(z)=\dfrac{1}{1+e^{-z}}$
+Suppose predict :
+* $y=1$ if $h_\theta(x) \geqslant 0.5$  换句话说  $\theta^Tx \geqslant 0$
+* $y=0$ if $h_\theta(x) < 0.5$  换句话说  $\theta^Tx < 0$
+
