@@ -145,7 +145,14 @@ $P(y=0|x;\theta) + P(y=1|x;\theta)=1$ ,可以推导出 : $P(y=0|x;\theta) = 1 - 
 
 ## 决策边界
 Logistic regression 逻辑回归 : $h_{\theta}(x) = g(\theta^Tx)$ ，其中 $g(z)=\dfrac{1}{1+e^{-z}}$
-Suppose predict :
-* $y=1$ if $h_\theta(x) \geqslant 0.5$  换句话说  $\theta^Tx \geqslant 0$
-* $y=0$ if $h_\theta(x) < 0.5$  换句话说  $\theta^Tx < 0$
+Suppose  :
+* predict 预测 $y=1$ if $h_\theta(x) \geqslant 0.5$  换句话说  $\theta^Tx \geqslant 0$
+* predict 预测 $y=0$ if $h_\theta(x) < 0.5$  换句话说  $\theta^Tx < 0$
+
+### Decision Boundary 决策边界
+$h_\theta(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$ , 假设 $\theta = \begin{bmatrix}-3\\1\\1\end{bmatrix}$
+预测:  $y=1$ 则 $-3 + x_1 + x_2 \geqslant 0$ 变换算式 : $x_1 +x_2 \geqslant 3$
+其中 $x_1 + x_2 = 3$ 是 **决策边界** 
+> 换句话说 **决策边界** 是 $h_\theta(x)=0.5$ 的情况
+> **决策边界** 是 **假设函数** 的属性
 
