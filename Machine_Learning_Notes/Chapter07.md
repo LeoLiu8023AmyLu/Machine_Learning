@@ -74,7 +74,7 @@ Sigmoid 函数:
   "scales": [
     {
       "name": "x",
-      "type": "point",
+      "type": "linear",
       "range": "width",
       "domain": {"data": "table", "field": "x"}
     },
@@ -391,8 +391,11 @@ Repeat {
 
 **举例**:
 $\theta = \begin{bmatrix}\theta_1\\\theta_2\end{bmatrix}$
+
 $J(\theta) = (\theta_1-5)^2+(\theta_2-5)^2$
+
 $\dfrac{\partial}{\partial\theta_1}J(\theta) = 2*(\theta_1-5)$
+
 $\dfrac{\partial}{\partial\theta_2}J(\theta) = 2*(\theta_2-5)$
 
 > 编程计算练习

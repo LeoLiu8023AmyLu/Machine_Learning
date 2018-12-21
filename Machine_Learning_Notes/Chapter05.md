@@ -136,7 +136,7 @@ $\ \ \ \ \theta_j := \theta_j - \alpha\dfrac{\partial}{\partial\theta_j}J(\theta
             "scales": [
                 {
                 "name": "x",
-                "type": "point",
+                "type": "linear",
                 "range": "width",
                 "domain": {"data": "table", "field": "x"}
                 },
