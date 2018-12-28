@@ -150,4 +150,27 @@
 ### 正则化
 将参数 $\theta_0,\theta_1,...,\theta_n$ 尽可能的缩小
 * 可以得到更为简化的假设
-* 减少过拟合
+* 减少过拟合 
+
+改写代价函数的方程:  $\underset{\theta}{min} \ \ J(\theta) = \dfrac{1}{2m}\Bigl[ \sum^m_{i=1}(h_\theta(x^{(i)})-y^{(i)})^2 + \lambda \sum^n_{j=1}\theta^2_j \Bigr]$
+* 第一项 $\sum^m_{i=1}(h_\theta(x^{(i)})-y^{(i)})^2$ 是为了让假设方程更加 **拟合数据**
+* 第二项 $\sum^n_{j=1}\theta^2_j$ 是为了让参数尽可能的 **小**
+* $\lambda$ 是调节两个部分的平衡参数 (regularization parameter 正则化参数)
+
+> 如果 $\lambda$ 设置过大，则将会忽略所有参数 $\theta_j,j=1,2,...,n$ , 假设将变为 **欠拟合** 状态
+
+## 线性回归的正则化
+代价方程:$\underset{\theta}{min} \ \ J(\theta) = \dfrac{1}{2m}\Bigl[ \sum^m_{i=1}(h_\theta(x^{(i)})-y^{(i)})^2 + \lambda \sum^n_{j=1}\theta^2_j \Bigr]$
+
+### 梯度下降:
+Repeat{
+* $\theta_0 := \theta_0 - \alpha \dfrac{1}{m} \ \sum^m_{i=1} (h_\theta(x^{(i)})-y^{(i)})x_0^{(i)}$
+* $\theta_j := \theta_j - \alpha \Bigl[ \dfrac{1}{m} \ \sum^m_{i=1} (h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} + \dfrac{\lambda}{m}\theta_j \Bigr]$   ($j=1,2,3,...,n$)
+  简化方程: $\theta_j := \theta_j(1-\alpha \dfrac{\lambda}{m}) - \alpha \dfrac{1}{m} \ \sum^m_{i=1} (h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$
+}
+> 其中 $\theta_0$ 是需要区别对待的
+> 其中 $1-\alpha\dfrac{\lambda}{m} < 1$
+
+### 正规方程
+$X=\begin{bmatrix}(x^{(1)})^T\\.\\.\\.\\(x^{(m)})^T\end{bmatrix}$ , $y=\begin{bmatrix}y^{(1)}\\.\\.\\.\\y^{(m)}\end{bmatrix}$
+

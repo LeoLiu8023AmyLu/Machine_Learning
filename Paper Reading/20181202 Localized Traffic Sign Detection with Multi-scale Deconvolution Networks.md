@@ -32,7 +32,7 @@ MDN 网络主要由 CRN (Convolutional Residual Network) ，MFPN (modified Featu
 ## 损失函数
 
 * 置信度损失 confidence loss(conf) and 局部损失 localization loss(loc)
-$L(x,c,l,g) =\dfrac{1}{N} (L_{conf}(x,c)+\alpha L_{loc}(x,l,g))$
+$L(x,c,l,g) =\dfrac{1}{N} \Bigl(L_{conf}(x,c)+\alpha L_{loc}(x,l,g)\Bigr)$
 > $N$ 默认框数
 > $\alpha$ 调节参数，用于平衡 置信度损失与局部损失
 * 置信度损失函数
