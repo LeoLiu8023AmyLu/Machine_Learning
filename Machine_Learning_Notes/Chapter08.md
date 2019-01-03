@@ -172,5 +172,19 @@ Repeat{
 > 其中 $1-\alpha\dfrac{\lambda}{m} < 1$
 
 ### 正规方程
-$X=\begin{bmatrix}(x^{(1)})^T\\.\\.\\.\\(x^{(m)})^T\end{bmatrix}$ , $y=\begin{bmatrix}y^{(1)}\\.\\.\\.\\y^{(m)}\end{bmatrix}$
+$X=\begin{bmatrix}(x^{(1)})^T\\.\\.\\.\\(x^{(m)})^T\end{bmatrix}$ , $y=\begin{bmatrix}y^{(1)}\\.\\.\\.\\y^{(m)}\end{bmatrix}$ , 求解 $\underset{\theta}{min}J(\theta)$ 
+
+假设 $\dfrac{\partial}{\partial\theta_j}J(\theta)\overset{set}{=} 0$
+
+$\theta = \Biggl( X^TX + \lambda \begin{bmatrix}
+  0&0&0&\cdots&0\\
+  0&1&0&\cdots&0\\
+  0&0&1&\cdots&0\\
+  \vdots&\vdots&\vdots&\ddots&\vdots\\
+  0&0&0&\cdots&1\end{bmatrix} \Biggr)^{-1}X^Ty$
+
+> 其中的矩阵为 $n+1$ 维 ( 首行系数为 $0$，其余对角线为 $1$ )
+
+如果 $m$ 为样本 $n$ 为特征，$m n$
+
 
