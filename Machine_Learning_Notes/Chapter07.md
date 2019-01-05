@@ -175,7 +175,7 @@ $h_\theta(x)=\dfrac{1}{1+e^{-\theta^Tx}}$
 
 线性回归 Linear regression : 
 
-$J(\theta) = \dfrac{1}{m} \sum^m_{i=1} \dfrac{1}{2}(h_\theta(x^{(i)})-y^{(i)})^2 = \dfrac{1}{m} \sum^m_{i=1} Cost(h_\theta(x^{(i)},y^{(i)})$
+$J(\theta) = \dfrac{1}{m}\displaystyle\sum^m_{i=1} \dfrac{1}{2}(h_\theta(x^{(i)})-y^{(i)})^2 = \dfrac{1}{m}\displaystyle\sum^m_{i=1} Cost(h_\theta(x^{(i)},y^{(i)})$
 
 **定义** : $Cost(h_\theta(x,y) = \dfrac{1}{2}(h_\theta(x)-y)^2$ 
 
@@ -335,7 +335,7 @@ $log(z)$ 相关函数
 ## 简化代价函数与梯度下降函数
 逻辑回归代价函数:
 
-$J(\theta) = \dfrac{1}{m} \sum^m_{i=1} Cost(h_\theta(x^{(i)},y^{(i)})$
+$J(\theta) = \dfrac{1}{m}\displaystyle\sum^m_{i=1} Cost(h_\theta(x^{(i)},y^{(i)})$
 
 $Cost(h_\theta(x,y) = \begin{cases}\ \ \ \ \ \ \ -log(h_\theta(x))\ \ \ if\ y = 1\\ - log(1-h_\theta(x))\ \ \ if\ y=0 \end{cases}$
 
@@ -346,7 +346,7 @@ $Cost(h_\theta(x,y) = \begin{cases}\ \ \ \ \ \ \ -log(h_\theta(x))\ \ \ if\ y = 
 > 如果 $y=1$ : $Cost(h_\theta(x,y) = -log(h_\theta(x))$
 > 如果 $y=0$ : $Cost(h_\theta(x,y) = - log(1-h_\theta(x))$
 
-$J(\theta) = \dfrac{1}{m} \sum^m_{i=1} Cost(h_\theta(x^{(i)},y^{(i)}) \\ \ \ \ \ \ \ \ \ \  = -\dfrac{1}{m}[\ \sum^m_{i=1} y^{(i)} \times log(h_\theta(x^{(i)})) + (1-y^{(i)})\times log(1-h_\theta(x^{(i)}))\ ]$
+$J(\theta) = \dfrac{1}{m}\displaystyle\sum^m_{i=1} Cost(h_\theta(x^{(i)},y^{(i)}) \\ \ \ \ \ \ \ \ \ \  = -\dfrac{1}{m}[\ \displaystyle\sum^m_{i=1} y^{(i)} \times log(h_\theta(x^{(i)})) + (1-y^{(i)})\times log(1-h_\theta(x^{(i)}))\ ]$
 
 > 统计学 **极大似然函数** 得到的，而且这个函数是凸函数
 
@@ -354,10 +354,10 @@ $J(\theta) = \dfrac{1}{m} \sum^m_{i=1} Cost(h_\theta(x^{(i)},y^{(i)}) \\ \ \ \ \
 
 一般求解 **最小** $J(\theta)$ 的方法：
 
-**梯度下降** $J(\theta) =-\dfrac{1}{m}[\ \sum^m_{i=1} y^{(i)} \times log(h_\theta(x^{(i)})) + (1-y^{(i)})\times log(1-h_\theta(x^{(i)}))\ ]$
+**梯度下降** $J(\theta) =-\dfrac{1}{m}[\ \displaystyle\sum^m_{i=1} y^{(i)} \times log(h_\theta(x^{(i)})) + (1-y^{(i)})\times log(1-h_\theta(x^{(i)}))\ ]$
 
 Repeat {
-  $\ \ \ \ \theta_j :=\theta_j-\alpha \times \dfrac{\partial}{\partial \theta_j}J(\theta) =\theta_j-\alpha \times \sum^m_{i=1} (h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$
+  $\ \ \ \ \theta_j :=\theta_j-\alpha \times \dfrac{\partial}{\partial \theta_j}J(\theta) =\theta_j-\alpha \times \displaystyle\sum^m_{i=1} (h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$
   } 同时更新所有 $\ \theta_j$
 
 > </br>公式与之前线性回归一致，但是假设函数不同:

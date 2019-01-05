@@ -142,7 +142,7 @@
 
 如果想解决过拟合(过多的抖动)，需要 **惩罚** 参数 $\theta_3,\theta_4$ (控制高阶的系数), 让他们足够 **小**。 
 
-那么代价函数将改写为: $\underset{\theta}{min} \ \ \dfrac{1}{2m} \sum^m_{i=1}(h_\theta(x^{(i)})-y^{(i)})^2 \color{blue}{+1000\times \theta_3^2+1000\times \theta_4^2}$
+那么代价函数将改写为: $\underset{\theta}{min} \ \ \dfrac{1}{2m}\displaystyle\sum^m_{i=1}(h_\theta(x^{(i)})-y^{(i)})^2 \color{blue}{+1000\times \theta_3^2+1000\times \theta_4^2}$
 > 由于 $\theta_3,\theta_4$ 前面加了很大的系数，所以为了最小化代价函数，$\theta_3,\theta_4$ 只能接近于 $0$
 > 多项式  $\theta_0 + \theta_1x+\theta_2x^2+\theta_3x^3+\theta_4x^4$  将会接近  $\theta_0 + \theta_1x+\theta_2x^2$
 > 这样会得到一个更好的假设，从而可以更好的拟合
@@ -152,7 +152,7 @@
 * 可以得到更为简化的假设
 * 减少过拟合 
 
-改写代价函数的方程:  $\underset{\theta}{min} \ \ J(\theta) = \dfrac{1}{2m}\Bigl[ \sum^m_{i=1}(h_\theta(x^{(i)})-y^{(i)})^2 + \lambda \sum^n_{j=1}\theta^2_j \Bigr]$
+改写代价函数的方程:  $\underset{\theta}{min} \ \ J(\theta) = \dfrac{1}{2m}\Bigl[\displaystyle\sum^m_{i=1}(h_\theta(x^{(i)})-y^{(i)})^2 + \lambda\displaystyle\sum^n_{j=1}\theta^2_j \Bigr]$
 * 第一项 $\sum^m_{i=1}(h_\theta(x^{(i)})-y^{(i)})^2$ 是为了让假设方程更加 **拟合数据**
 * 第二项 $\sum^n_{j=1}\theta^2_j$ 是为了让参数尽可能的 **小**
 * $\lambda$ 是调节两个部分的平衡参数 (regularization parameter 正则化参数)
@@ -160,13 +160,13 @@
 > 如果 $\lambda$ 设置过大，则将会忽略所有参数 $\theta_j,j=1,2,...,n$ , 假设将变为 **欠拟合** 状态
 
 ## 线性回归的正则化
-代价方程:$\underset{\theta}{min} \ \ J(\theta) = \dfrac{1}{2m}\Bigl[ \sum^m_{i=1}(h_\theta(x^{(i)})-y^{(i)})^2 + \lambda \sum^n_{j=1}\theta^2_j \Bigr]$
+代价方程:$\underset{\theta}{min} \ \ J(\theta) = \dfrac{1}{2m}\Bigl[\displaystyle\sum^m_{i=1}(h_\theta(x^{(i)})-y^{(i)})^2 + \lambda\displaystyle\sum^n_{j=1}\theta^2_j \Bigr]$
 
 ### 梯度下降:
 Repeat{
-* $\theta_0 := \theta_0 - \alpha \dfrac{1}{m} \ \sum^m_{i=1} (h_\theta(x^{(i)})-y^{(i)})x_0^{(i)}$
-* $\theta_j := \theta_j - \alpha \Bigl[ \dfrac{1}{m} \ \sum^m_{i=1} (h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} + \dfrac{\lambda}{m}\theta_j \Bigr]$   ($j=1,2,3,...,n$)
-  简化方程: $\theta_j := \theta_j(1-\alpha \dfrac{\lambda}{m}) - \alpha \dfrac{1}{m} \ \sum^m_{i=1} (h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$
+* $\theta_0 := \theta_0 - \alpha \dfrac{1}{m} \ \displaystyle\sum^m_{i=1} (h_\theta(x^{(i)})-y^{(i)})x_0^{(i)}$
+* $\theta_j := \theta_j - \alpha \Bigl[ \dfrac{1}{m} \ \displaystyle\sum^m_{i=1} (h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} + \dfrac{\lambda}{m}\theta_j \Bigr]$   ($j=1,2,3,...,n$)
+  简化方程: $\theta_j := \theta_j(1-\alpha \dfrac{\lambda}{m}) - \alpha \dfrac{1}{m} \ \displaystyle\sum^m_{i=1} (h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$
 }
 > 其中 $\theta_0$ 是需要区别对待的
 > 其中 $1-\alpha\dfrac{\lambda}{m} < 1$
@@ -185,6 +185,31 @@ $\theta = \Biggl( X^TX + \lambda \begin{bmatrix}
 
 > 其中的矩阵为 $n+1$ 维 ( 首行系数为 $0$，其余对角线为 $1$ )
 
-如果 $m$ 为样本 $n$ 为特征，$m n$
+如果 $m$ 为样本 $n$ 为特征，在 $m \leqslant n$ 的条件下，$X^TX$ 为奇异矩阵，无法求逆运算
 
+但是 **加入正则化** 后，且 $\lambda > 0$ 时， $\Biggl( X^TX + \lambda \begin{bmatrix}
+  0&0&0&\cdots&0\\
+  0&1&0&\cdots&0\\
+  0&0&1&\cdots&0\\
+  \vdots&\vdots&\vdots&\ddots&\vdots\\
+  0&0&0&\cdots&1\end{bmatrix} \Biggr)$ ，可逆 。
 
+  > 加入正则化 $\lambda > 0$ 可以解决 正规方程中 **不可逆** 的问题
+
+## 逻辑回归的正则化
+
+加入正则化的逻辑回归的代价函数：
+
+$J(\theta) =-\Bigl[\ \dfrac{1}{m} \displaystyle\sum^m_{i=1} y^{(i)} \times log(h_\theta(x^{(i)})) + (1-y^{(i)})\times log(1-h_\theta(x^{(i)}))\ \Bigr] \color{blue}{+\dfrac{\lambda}{2m} \displaystyle\sum^n_{j=1}\theta^2_j}$
+
+### 梯度下降
+
+Repeat{
+* $\theta_0 := \theta_0 - \alpha \dfrac{1}{m} \ \displaystyle\sum^m_{i=1} (h_\theta(x^{(i)})-y^{(i)})x_0^{(i)}$
+* $\theta_j := \theta_j - \alpha \Bigl[ \dfrac{1}{m} \ \displaystyle\sum^m_{i=1} (h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} + \dfrac{\lambda}{m}\theta_j \Bigr]$   ($j=1,2,3,...,n$)
+  
+  注意: 形式与线性回归很像，但是 $h_{\theta}(x) = \dfrac{1}{1+e^{-\theta^TX}}$
+  简化方程: $\theta_j := \theta_j(1-\alpha \dfrac{\lambda}{m}) - \alpha \dfrac{1}{m} \ \displaystyle\sum^m_{i=1} (h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$
+}
+> 其中 $\theta_0$ 是需要区别对待的
+> 其中 $1-\alpha\dfrac{\lambda}{m} < 1$

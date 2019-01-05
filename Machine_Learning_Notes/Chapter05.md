@@ -25,7 +25,7 @@ For convenience of notation,define $x_0=1$ ，方便运算 将 $x_0 = 1$
 ## 多元梯度下降法
 Hypothesis 假设 : $h_{\theta}(x) = \theta^T x = \theta_0+\theta_1 x_1+\theta_2 x_2+\theta_3 x_3+ ... + \theta_n x_n$ 其中 $x_0 = 1$
 Parameters 参数 : $\theta_0,\theta_1,...,\theta_n = \theta$
-Cost function : $J(\theta_0,\theta_1,...,\theta_n) = J(\theta) = \dfrac{1}{2m} \sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)})^2$
+Cost function : $J(\theta_0,\theta_1,...,\theta_n) = J(\theta) = \dfrac{1}{2m} \displaystyle\sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)})^2$
 
 Gradient descent :
 Repeat {
@@ -35,18 +35,18 @@ Repeat {
 
 * Previously(n=1) 单变量线性回归:
 Repeat {
-    $\ \ \ \ \theta_0 := \theta_0 - \alpha \dfrac{\partial}{\partial\theta_j}J(\theta) = \theta_0 - \alpha \dfrac{1}{m} \sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)})$ 
-    $\ \ \ \ \theta_1 := \theta_1 - \alpha \dfrac{1}{m} \sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)}) \textcolor{red}{x^{(i)}}$ 
+    $\ \ \ \ \theta_0 := \theta_0 - \alpha \dfrac{\partial}{\partial\theta_j}J(\theta) = \theta_0 - \alpha \dfrac{1}{m} \displaystyle\sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)})$ 
+    $\ \ \ \ \theta_1 := \theta_1 - \alpha \dfrac{1}{m} \displaystyle\sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)}) \textcolor{red}{x^{(i)}}$ 
 } (simultaneously update $\theta_0 ,\theta_1$)
 </br>
 
 * New algorithm 多元线性回归:
 Repeat {
-    $\ \ \ \ \theta_j := \theta_j - \alpha \dfrac{\partial}{\partial\theta_j}J(\theta) = \theta_j - \alpha \dfrac{1}{m}\sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)}) \textcolor{red}{x_j^{(i)}}$ 
+    $\ \ \ \ \theta_j := \theta_j - \alpha \dfrac{\partial}{\partial\theta_j}J(\theta) = \theta_j - \alpha \dfrac{1}{m} \displaystyle\sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)}) \textcolor{red}{x_j^{(i)}}$ 
 } (simultaneously update $\theta_j$ for $j =0,...,n$)
-$\textcolor{red}{\theta_0}:=\textcolor{red}{\theta_0}-\alpha\dfrac{1}{m}\sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)}) \textcolor{red}{x_0^{(i)}} \ \ \textcolor{blue}{x_0^{(i)}=0}$
-$\textcolor{red}{\theta_1}:=\textcolor{red}{\theta_1}-\alpha\dfrac{1}{m}\sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)}) \textcolor{red}{x_1^{(i)}}$
-$\textcolor{red}{\theta_2}:=\textcolor{red}{\theta_2}-\alpha\dfrac{1}{m}\sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)}) \textcolor{red}{x_2^{(i)}}$
+$\textcolor{red}{\theta_0}:=\textcolor{red}{\theta_0}-\alpha\dfrac{1}{m} \displaystyle\sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)}) \textcolor{red}{x_0^{(i)}} \ \ \textcolor{blue}{x_0^{(i)}=0}$
+$\textcolor{red}{\theta_1}:=\textcolor{red}{\theta_1}-\alpha\dfrac{1}{m} \displaystyle\sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)}) \textcolor{red}{x_1^{(i)}}$
+$\textcolor{red}{\theta_2}:=\textcolor{red}{\theta_2}-\alpha\dfrac{1}{m} \displaystyle\sum^m_{i=1}(h_{\theta}(x^{(i)})-y^{(i)}) \textcolor{red}{x_2^{(i)}}$
 ...
 
 ## 多元梯度下降法处理技巧-特征缩放
@@ -355,7 +355,7 @@ Normal equation : Method to solve for $\theta$ analytically.
     $J(\theta) = a\theta^2 + b\theta +c$ ，求解 $\dfrac{\partial}{\partial\theta}J(\theta)$ 导数为零时 $\theta$ 的值
     </br>
 * Normally 实际中 : $\theta \in \Re^{n+1}$
-    $J(\theta_0,\theta_1,...,\theta_n) = \dfrac{1}{2m} \sum^m_{i=1}(h_\theta(x^{(i)})-y^{(i)})^2$
+    $J(\theta_0,\theta_1,...,\theta_n) = \dfrac{1}{2m} \displaystyle\sum^m_{i=1}(h_\theta(x^{(i)})-y^{(i)})^2$
     $\dfrac{\partial}{\partial\theta}J(\theta) = ... = 0$ ( for every $j$ )
     求出 $\theta_0,\theta_1,...,\theta_n$
     </br>
