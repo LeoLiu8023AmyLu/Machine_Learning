@@ -1,4 +1,4 @@
-# Logistics 回归 逻辑回归
+# logistics 回归 逻辑回归
 ## 分类
 分类任务：
 * 邮件: 是否是垃圾邮件
@@ -21,8 +21,8 @@ $y \in \{0,1\}$
 **逻辑回归** : $0 \leqslant h_{\theta}(x) \leqslant 1$
 
 ## 假设陈述
-Logistic Regression Model 逻辑回归模型: $0 \leqslant h_{\theta}(x) \leqslant 1$
-$h_{\theta}(x) = g(\theta^Tx)$ ，其中 $g(z)=\dfrac{1}{1+e^{-z}}$ 称为 `sigmoid function` sigmoid 函数 (Logistic function)。
+logistic Regression Model 逻辑回归模型: $0 \leqslant h_{\theta}(x) \leqslant 1$
+$h_{\theta}(x) = g(\theta^Tx)$ ，其中 $g(z)=\dfrac{1}{1+e^{-z}}$ 称为 `sigmoid function` sigmoid 函数 (logistic function)。
 结合后 $h_{\theta}(x) = \dfrac{1}{1+e^{-\theta^Tx}}$
 
 Sigmoid 函数:
@@ -144,7 +144,7 @@ $h_\theta(x)=P(y=1|x;\theta)$ 给出 特征 $x$ , 参数 $\theta$ 时 $y=1$ 的�
 $P(y=0|x;\theta) + P(y=1|x;\theta)=1$ ,可以推导出 : $P(y=0|x;\theta) = 1 - P(y=1|x;\theta)$
 
 ## 决策边界
-Logistic regression 逻辑回归 : $h_{\theta}(x) = g(\theta^Tx)$ ，其中 $g(z)=\dfrac{1}{1+e^{-z}}$
+logistic regression 逻辑回归 : $h_{\theta}(x) = g(\theta^Tx)$ ，其中 $g(z)=\dfrac{1}{1+e^{-z}}$
 Suppose  :
 * predict 预测 $y=1$ if $h_\theta(x) \geqslant 0.5$  换句话说  $\theta^Tx \geqslant 0$
 * predict 预测 $y=0$ if $h_\theta(x) < 0.5$  换句话说  $\theta^Tx < 0$
@@ -183,11 +183,11 @@ $J(\theta) = \dfrac{1}{m}\displaystyle\sum^m_{i=1} \dfrac{1}{2}(h_\theta(x^{(i)}
 * 凸函数 : 平滑的弓形函数，可以收敛到全剧最小 (想要的函数)
 * 非凸函数 : 抖动的函数(类似波浪状)，不能保证收敛到全局最小
 
-逻辑回归 Logistic regression : 
+逻辑回归 logistic regression : 
 
-**定义** : $Cost(h_\theta(x,y) = \begin{cases}\ \ \ \ \ \ \ -log(h_\theta(x))\ \ \ if\ y = 1\\ - log(1-h_\theta(x))\ \ \ if\ y=0 \end{cases}$
+**定义** : $Cost(h_\theta(x,y) = \begin{cases}\ \ \ \ \ \ \ -\log(h_\theta(x))\ \ \ if\ y = 1\\ - \log(1-h_\theta(x))\ \ \ if\ y=0 \end{cases}$
 
-$log(z)$ 相关函数
+$\log(z)$ 相关函数
 ``` vega
 {
   "$schema": "https://vega.github.io/schema/vega/v4.json",
@@ -327,9 +327,9 @@ $log(z)$ 相关函数
 }
 ```
 > </br>图表说明: 
-> * **蓝色**  $\ \ \ \ log(z)$  函数 
-> * **橙色**  $\ -log(z)$  函数 
-> * **红色**  $\ -log(1-z)$  函数 
+> * **蓝色**  $\ \ \ \ \log(z)$  函数 
+> * **橙色**  $\ -\log(z)$  函数 
+> * **红色**  $\ -\log(1-z)$  函数 
 > </br>
 
 ## 简化代价函数与梯度下降函数
@@ -337,16 +337,16 @@ $log(z)$ 相关函数
 
 $J(\theta) = \dfrac{1}{m}\displaystyle\sum^m_{i=1} Cost(h_\theta(x^{(i)},y^{(i)})$
 
-$Cost(h_\theta(x,y) = \begin{cases}\ \ \ \ \ \ \ -log(h_\theta(x))\ \ \ if\ y = 1\\ - log(1-h_\theta(x))\ \ \ if\ y=0 \end{cases}$
+$Cost(h_\theta(x,y) = \begin{cases}\ \ \ \ \ \ \ -\log(h_\theta(x))\ \ \ if\ y = 1\\ - \log(1-h_\theta(x))\ \ \ if\ y=0 \end{cases}$
 
 **注意** : 只有 $y=0$ 或者 $y=1$ 两种取值
 
-合并并简化代价方程 : $Cost(h_\theta(x,y) = -y\times log(h_\theta(x)) - (1-y)\times log(1-h_\theta(x))$
+合并并简化代价方程 : $Cost(h_\theta(x,y) = -y\times \log(h_\theta(x)) - (1-y)\times \log(1-h_\theta(x))$
 
-> 如果 $y=1$ : $Cost(h_\theta(x,y) = -log(h_\theta(x))$
-> 如果 $y=0$ : $Cost(h_\theta(x,y) = - log(1-h_\theta(x))$
+> 如果 $y=1$ : $Cost(h_\theta(x,y) = -\log(h_\theta(x))$
+> 如果 $y=0$ : $Cost(h_\theta(x,y) = - \log(1-h_\theta(x))$
 
-$J(\theta) = \dfrac{1}{m}\displaystyle\sum^m_{i=1} Cost(h_\theta(x^{(i)},y^{(i)}) \\ \ \ \ \ \ \ \ \ \  = -\dfrac{1}{m}[\ \displaystyle\sum^m_{i=1} y^{(i)} \times log(h_\theta(x^{(i)})) + (1-y^{(i)})\times log(1-h_\theta(x^{(i)}))\ ]$
+$J(\theta) = \dfrac{1}{m}\displaystyle\sum^m_{i=1} Cost(h_\theta(x^{(i)},y^{(i)}) \\ \ \ \ \ \ \ \ \ \  = -\dfrac{1}{m}[\ \displaystyle\sum^m_{i=1} y^{(i)} \times \log(h_\theta(x^{(i)})) + (1-y^{(i)})\times \log(1-h_\theta(x^{(i)}))\ ]$
 
 > 统计学 **极大似然函数** 得到的，而且这个函数是凸函数
 
@@ -354,7 +354,7 @@ $J(\theta) = \dfrac{1}{m}\displaystyle\sum^m_{i=1} Cost(h_\theta(x^{(i)},y^{(i)}
 
 一般求解 **最小** $J(\theta)$ 的方法：
 
-**梯度下降** $J(\theta) =-\dfrac{1}{m}[\ \displaystyle\sum^m_{i=1} y^{(i)} \times log(h_\theta(x^{(i)})) + (1-y^{(i)})\times log(1-h_\theta(x^{(i)}))\ ]$
+**梯度下降** $J(\theta) =-\dfrac{1}{m}[\ \displaystyle\sum^m_{i=1} y^{(i)} \times \log(h_\theta(x^{(i)})) + (1-y^{(i)})\times \log(1-h_\theta(x^{(i)}))\ ]$
 
 Repeat {
   $\ \ \ \ \theta_j :=\theta_j-\alpha \times \dfrac{\partial}{\partial \theta_j}J(\theta) =\theta_j-\alpha \times \displaystyle\sum^m_{i=1} (h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$

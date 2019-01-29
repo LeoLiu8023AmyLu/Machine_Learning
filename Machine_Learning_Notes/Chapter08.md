@@ -200,7 +200,7 @@ $\theta = \Biggl( X^TX + \lambda \begin{bmatrix}
 
 加入正则化的逻辑回归的代价函数：
 
-$J(\theta) =-\Bigl[\ \dfrac{1}{m} \displaystyle\sum^m_{i=1} y^{(i)} \times log(h_\theta(x^{(i)})) + (1-y^{(i)})\times log(1-h_\theta(x^{(i)}))\ \Bigr] \color{blue}{+\dfrac{\lambda}{2m} \displaystyle\sum^n_{j=1}\theta^2_j}$
+$J(\theta) =-\Bigl[\ \dfrac{1}{m} \displaystyle\sum^m_{i=1} y^{(i)} \times \log(h_\theta(x^{(i)})) + (1-y^{(i)})\times \log(1-h_\theta(x^{(i)}))\ \Bigr] \color{blue}{+\dfrac{\lambda}{2m} \displaystyle\sum^n_{j=1}\theta^2_j}$
 
 ### 梯度下降
 
