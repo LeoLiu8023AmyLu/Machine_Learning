@@ -8,7 +8,7 @@
 7. [Logistic 回归](./Chapter07.md)
 8. [正则化](./Chapter08.md)
 9. [神经网络学习](./Chapter09.md)
-10. [神经网络参数的反向传播算法](./Chapter10.md)
+10. [神经网络参数的反向传播算法](./Chapter09.md)
 11. [应用机器学习的建议](./Chapter11.md)
 12. [机器学习系统设计](./Chapter12.md)
 13. [支持向量机](./Chapter13.md)
