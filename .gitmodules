@@ -1,0 +1,3 @@
+[submodule "coursera-ml-py"]
+	path = coursera-ml-py
+	url = https://github.com/nsoojin/coursera-ml-py.git
