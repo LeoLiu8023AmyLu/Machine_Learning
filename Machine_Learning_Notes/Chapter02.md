@@ -129,3 +129,7 @@ $\dfrac{\partial}{\partial\theta_j} J(\theta_0.\theta_1) = \dfrac{\partial}{\par
 ### "Batch" Gredient Descent
 "Batch": Each step of gradient descent uses all the training examples.
 > 每一步梯度下降，都遍历整个训练集的样本
+
+上一章 [绪论:初识机器学习](./Chapter01.md)
+下一章 [线性回归回顾](./Chapter03.md)
+[返回目录](./Topic.md)

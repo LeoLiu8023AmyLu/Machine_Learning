@@ -176,3 +176,8 @@ $A^T = \begin{bmatrix}1&3\\2&5\\0&9\end{bmatrix}$
 
 假设 $A$ 是一个 $m \times n$ 的矩阵，设 $B = A^T$, 则 $B$ 是一个 $n \times m$ 的矩阵
 > 存在关系: $B_{ij} = A_{ji}$
+
+
+上一章 [单变量线性回归](./Chapter02.md)
+下一章 [多变量线性回归](./Chapter05.md)
+[返回目录](./Topic.md)
