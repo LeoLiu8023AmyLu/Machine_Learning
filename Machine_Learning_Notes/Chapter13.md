@@ -358,4 +358,17 @@ Sigmoid 函数 其中 $z=\theta^Tx$:
     > 其中 $z=\theta^Tx$
     > <font color=RoyalBlue font-weight=bold >蓝色</font> 为损失函数，<font color=RoyalBlue font-weight=bold >橙色</font> 为假设的 $Cost_0(z)$ 函数
 
-    
+### 支持向量机 Support vector machine
+
+* Logistic regression 逻辑回归:
+  $\underset{\theta}{min} J(\theta) = \underset{\theta}{min} \ \dfrac{1}{m}\Bigl[ \sum^m_{i=1} y^{(i)} \times (-\log(h_\theta(x^{(i)}))) + (1-y^{(i)}) \times (-\log(1-h_\theta(x^{(i)})))\Bigr] + \dfrac{\lambda}{2m}\sum^n_{j=1}\theta^2_j$
+
+* Support vector machine 支持向量机:
+  $\underset{\theta}{min} J(\theta) = \underset{\theta}{min} \ C\Bigl[ \sum^m_{i=1} y^{(i)} \times (Cost_1(\theta^Tx^{(i)})) + (1-y^{(i)}) \times (Cost_0(\theta^Tx^{(i)}))\Bigr] + \dfrac{1}{2}\sum^n_{j=1}\theta^2_j$
+
+> **提示:**
+> 1. 逻辑回归是 $A+\lambda B$ 形式，支持向量机是 $CA+B$ 形式
+> 2. 支持向量机中的 $C$ 相当于 $\dfrac{1}{\lambda}$,关系为$C=\dfrac{1}{\lambda}$
+
+## 直观理解 大间隔
+
