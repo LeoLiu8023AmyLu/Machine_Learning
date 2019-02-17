@@ -364,7 +364,7 @@ Sigmoid 函数 其中 $z=\theta^Tx$:
   $\underset{\theta}{min} J(\theta) = \underset{\theta}{min} \ \dfrac{1}{m}\Bigl[ \sum^m_{i=1} y^{(i)} \times (-\log(h_\theta(x^{(i)}))) + (1-y^{(i)}) \times (-\log(1-h_\theta(x^{(i)})))\Bigr] + \dfrac{\lambda}{2m}\sum^n_{j=1}\theta^2_j$
 
 * Support vector machine 支持向量机:
-  $\underset{\theta}{min} J(\theta) = \underset{\theta}{min} \ C\Bigl[ \sum^m_{i=1} y^{(i)} \times (Cost_1(\theta^Tx^{(i)})) + (1-y^{(i)}) \times (Cost_0(\theta^Tx^{(i)}))\Bigr] + \dfrac{1}{2}\sum^n_{j=1}\theta^2_j$
+  $\underset{\theta}{min} J(\theta) = \underset{\theta}{min} \ C \sum^m_{i=1} \Bigl[ y^{(i)} \times (Cost_1(\theta^Tx^{(i)})) + (1-y^{(i)}) \times (Cost_0(\theta^Tx^{(i)}))\Bigr] + \dfrac{1}{2}\sum^n_{j=1}\theta^2_j$
 
 > **提示:**
 > 1. 逻辑回归是 $A+\lambda B$ 形式，支持向量机是 $CA+B$ 形式
@@ -372,3 +372,12 @@ Sigmoid 函数 其中 $z=\theta^Tx$:
 
 ## 直观理解 大间隔
 
+### 支持向量机回顾
+对于支持向量机 $\underset{\theta}{min} \ C \sum^m_{i=1} \Bigl[ y^{(i)} \times (Cost_1(\theta^Tx^{(i)})) + (1-y^{(i)}) \times (Cost_0(\theta^Tx^{(i)}))\Bigr] + \dfrac{1}{2}\sum^n_{j=1}\theta^2_j$
+
+* 如果 $y=1$ 我们希望 $\theta^Tx \geqslant 1$ 不仅是 $\geqslant 0$
+* 如果 $y=0$ 我们希望 $\theta^Tx \leqslant -1$ 不仅是 $< 0$
+
+> 支持向量机的安全间隔机制
+
+### 支持向量机边界
