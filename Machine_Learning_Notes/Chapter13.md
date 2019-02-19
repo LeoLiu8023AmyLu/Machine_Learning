@@ -416,14 +416,68 @@ $\underset{\theta}{min} \dfrac{1}{2} \sum^n_{j=1} \theta^2_j = \dfrac{1}{2}(\the
 ## 核函数
 
 ### 核函数与相似函数
-$f_1 = \text{similarity}(x,l^{1}) = \exp(-\dfrac{{\lVert x - l^{(1)} \rVert}^2}{2\sigma^2}) = \exp(-\dfrac{\sum^n_{j=1}(x_j -l^{(1)}_j )^2}{2\sigma^2})$
-* 如果 $x \approx l^{(1)}$: 欧氏距离非常相近，分子项约为 0 ，因此 
-  $f_1 \approx \exp(- \dfrac{0^2}{2\sigma^2})\approx1$
-* 如果 $x$ 与 $l^{(1)}$ 的距离很远: 分子项为很大的数，因此 
-  $f_1 = \exp(-\dfrac{(\text(large \ number)^2)}{2\sigma^2}) \approx 0$
+$f_i = \text{similarity}(x,l^{(i)}) = \exp(-\dfrac{{\lVert x - l^{(i)} \rVert}^2}{2\sigma^2}) = \exp(-\dfrac{\sum^n_{j=1}(x_j -l^{(i)}_j )^2}{2\sigma^2})$
+
+* 如果 $x \approx l^{(i)}$: 欧氏距离非常相近，分子项约为 0 ，因此 
+  $f_i \approx \exp(- \dfrac{0^2}{2\sigma^2})\approx1$
+* 如果 $x$ 与 $l^{(i)}$ 的距离很远: 分子项为很大的数，因此 
+  $f_i = \exp(-\dfrac{(\text(large \ number)^2)}{2\sigma^2}) \approx 0$
 
 ![Kernel_func](/assets/Kernel_func.png)
 
 > $\sigma^2$ 为范围调整参数
 > * $\sigma^2$ 越小，区域越小，参数变化的趋势越快
 > * $\sigma^2$ 越大，区域越大，参数变化的趋势越慢
+
+利用标记点与核函数可以辅助找到高纬度非线性假设
+
+### 选择标记点
+
+将 **训练样本** 作为 **标记点**
+训练集: $(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),...,(x^{(m)},y^{(m)})$
+标记点: $l^{(1)}=x^{(1)},l^{(2)}=x^{(2)},...,l^{(m)}=x^{(m)}$
+得到一个样本 $x$ :$f_1 = \text{similarity}(x,l^{(1)})$ , $f_2 = \text{similarity}(x,l^{(2)})$ ... $f_m = \text{similarity}(x,l^{(m)})$ 
+向量形式为: $f = \begin{bmatrix}f_0\\f_1\\f_2\\ \vdots\\f_m\end{bmatrix}$ , 其中 $f_0=1$
+
+### SVM 使用 核函数
+
+假设：给一个 $x$ ，计算特征 $f \in \R^{m+1}$ ($m$个训练数据，还要加上一个 $f_0$)
+$\begin{cases} y=1 &\text{if} \ \theta^Tf \geq 0 \\y=0 &\text{if} \ \theta^Tf \leq 0 \end{cases}$
+
+训练:  $\underset{\theta}{min} \ C \sum^m_{i=1} y^{(i)} cost_1(\theta^Tf^{(i)})+(1-y^{(i)})cost_0(\theta^Tf^{(i)}) \ + \ \dfrac{1}{2}\sum^n_{j=1} \theta^2_j$  (如果训练数据与标记点是相同的，则 $n=m$)
+
+### SVM 参数
+
+正则化参数 : $C=\dfrac{1}{\lambda}$ 
+* $C$ **较大**时: 低偏差，高方差 ($\lambda$ 较小) 过拟合
+* $C$ **较小**时: 高偏差，低方差 ($\lambda$ 较大) 欠拟合
+
+$\sigma^2$ 为 高斯核 $f_i = \exp(-\dfrac{{\lVert x - l^{(i)} \rVert}^2}{2\sigma^2})$ 的参数
+* $\sigma^2$ 较**大**: 特征 $f_i$ 变化越平滑，训练结果为: **高偏差**，**低方差**
+* $\sigma^2$ 较**小**: 特征 $f_i$ 变化越剧烈，训练结果为: **低偏差**，**高方差**
+
+## 使用 SVM
+利用当今研究者封装好的库来使用 SVM 解出最优参数 $\theta$
+需要注意的是:
+* 选择合适的 正则化参数 $C$
+* 选择合适的 核函数(Kernel - similarity function) :
+  * 无核函数 (线性核函数 Linear Kernel) 预测 $y=1 \ \text{if} \ \theta^Tx \geq 0$
+  * 高斯核 (Gaussian kernel) $f_i = \exp(-\dfrac{{\lVert x - l^{(i)} \rVert}^2}{2\sigma^2})$ 其中 $l^{(i)}=x^{(i)}$, 需要选择参数 $\sigma^2$
+    > 适用于 小特征 $n$, 大数据量 $m$
+    > 建议在特征尺度不一致的情况下 使用 **特征归一化** 后再使用高斯核
+  > 选择的核函数需要满足 **"Mercer's Theorem"** 理论，来确保 SVM 优化过程正确
+  * 其他核函数 (**不建议使用**) :
+    * 多项式核函数(Polynomial kernel) :  $k(x,l) = (x^Tl+canstant)^{degree}$, 其中 $canstant,degree$ 为自由数字
+    * 字符串核函数(String kernel)
+    * chi-square kernel
+    * histogram intersection kernel
+    * ...
+
+### 逻辑回归 对比 支持向量机
+假设: $n$ 为特征数量， $m$ 为训练样本数量
+* 如果 $n$ 相对于 $m$ 很大 ($n \geq m$ , $n=10,000$ , $m=10,...,1000$)
+  建议使用: 逻辑回归 或者 使用线性核函数的支持向量机 (无核函数的 SVM)
+* 如果 $n$ 很小 , $m$ 比较居中: ($n=1,...,1000$ , $m=10,...,10,000$)
+  建议使用: 使用高斯核函数的支持向量机
+* 如果 $n$ 很小 , $m$ 很大 : ($n=1,...,1000$ , $m=50,000^+$) 
+  建议使用: 增加或者创造更多的 **特征** 后，使用 **逻辑回归** 或者 **使用线性核函数的支持向量机** (无核函数的 SVM)
