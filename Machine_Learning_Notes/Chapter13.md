@@ -375,9 +375,42 @@ Sigmoid 函数 其中 $z=\theta^Tx$:
 ### 支持向量机回顾
 对于支持向量机 $\underset{\theta}{min} \ C \sum^m_{i=1} \Bigl[ y^{(i)} \times (Cost_1(\theta^Tx^{(i)})) + (1-y^{(i)}) \times (Cost_0(\theta^Tx^{(i)}))\Bigr] + \dfrac{1}{2}\sum^n_{j=1}\theta^2_j$
 
-* 如果 $y=1$ 我们希望 $\theta^Tx \geqslant 1$ 不仅是 $\geqslant 0$
-* 如果 $y=0$ 我们希望 $\theta^Tx \leqslant -1$ 不仅是 $< 0$
+* 如果 $y=1$ 我们希望 $\theta^Tx \geqslant 1$ ( 不仅是 $\geqslant 0$ )
+* 如果 $y=0$ 我们希望 $\theta^Tx \leqslant -1$ ( 不仅是 $< 0$ )
 
 > 支持向量机的安全间隔机制
 
 ### 支持向量机边界
+
+支持向量机 也称之为 大间距分类器
+> 因为算法在分类的时候 会采用最大 间距(margin) 的方案，所以将正负样本最大间距分开
+
+* 假设 $C$ 非常大，那么需要将 $\Bigl[ y^{(i)} \times (Cost_1(\theta^Tx^{(i)})) + (1-y^{(i)}) \times (Cost_0(\theta^Tx^{(i)}))\Bigr]$ 逼近于零
+此时，异常点对分类产生很大影响
+* 假设 $C$ 没有很大，那么结果分类鲁棒性会较好，但是准确度会有所下降
+
+> $C$ 较大时 容易理解大间距的概念
+
+## 大间隔分类的数据原理
+
+### 向量间的内积
+
+假设 $u=\begin{bmatrix}u_1\\u_2\end{bmatrix}$ , $v=\begin{bmatrix}v_1\\v_2\end{bmatrix}$, 则 $u^Tv=u_1v_1+u_2v_2$
+* $\lVert u \rVert = \sqrt{\smash[b]{u_1^2+u_2^2}} \in \R$ , 表示 $u$ 向量的长度 (范数)
+* $\lVert v \rVert = \sqrt{\smash[b]{v_1^2+v_2^2}} \in \R$ , 表示 $v$ 向量的长度 (范数)
+* $u^Tv= p \times \lVert u \rVert = u_1v_1+u_2v_2 = v^Tu$ 其中 $p$ 是 $v$ 在 $u$ 上的投影的长度
+  > $v$ 与 $u$ 的角度小于 $90^\circ$ 时为 **正**，大于$90^\circ$ 时为 **负**
+
+
+### SVM 决策边界
+
+假设只有两个参数 : $\theta_1,\theta_2$ ，忽略 $\theta_0$ 定义 $\theta_0=0$
+$\begin{cases} \theta^Tx^{(i)}\geq 1 &\text{if} \ y^{(i)}=1 \\ \theta^Tx^{(i)} \leq -1 &\text{if} \ y^{(i)}=0 \end{cases}$ 或者用内积的表示方式: $\begin{cases} p^{(i)} \lVert \theta \rVert \geq 1 &\text{if} \ y^{(i)}=1 \\p^{(i)} \lVert \theta \rVert \leq -1  &\text{if} \ y^{(i)}=0 \end{cases}$
+
+$\underset{\theta}{min} \dfrac{1}{2} \sum^n_{j=1} \theta^2_j = \dfrac{1}{2}(\theta^2_1+\theta^2_2) = \dfrac{1}{2}(\sqrt{\smash[b]{\theta_1^2+\theta_2^2}})^2 = \dfrac{1}{2}(\lVert \theta \rVert)^2$
+
+> 我们希望 $\lVert \theta \rVert$ 越小越好，换句话说 $p^{(i)}$ 越大越好
+> 因为 $p^{(i)}$ 变大后，就会在样本空间形成一个间距(margin)
+> $\theta_0 = 0$时，所有分割线经过 **原点**
+
+## 核函数
