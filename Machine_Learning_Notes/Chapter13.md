@@ -414,3 +414,16 @@ $\underset{\theta}{min} \dfrac{1}{2} \sum^n_{j=1} \theta^2_j = \dfrac{1}{2}(\the
 > $\theta_0 = 0$时，所有分割线经过 **原点**
 
 ## 核函数
+
+### 核函数与相似函数
+$f_1 = \text{similarity}(x,l^{1}) = \exp(-\dfrac{{\lVert x - l^{(1)} \rVert}^2}{2\sigma^2}) = \exp(-\dfrac{\sum^n_{j=1}(x_j -l^{(1)}_j )^2}{2\sigma^2})$
+* 如果 $x \approx l^{(1)}$: 欧氏距离非常相近，分子项约为 0 ，因此 
+  $f_1 \approx \exp(- \dfrac{0^2}{2\sigma^2})\approx1$
+* 如果 $x$ 与 $l^{(1)}$ 的距离很远: 分子项为很大的数，因此 
+  $f_1 = \exp(-\dfrac{(\text(large \ number)^2)}{2\sigma^2}) \approx 0$
+
+![Kernel_func](/assets/Kernel_func.png)
+
+> $\sigma^2$ 为范围调整参数
+> * $\sigma^2$ 越小，区域越小，参数变化的趋势越快
+> * $\sigma^2$ 越大，区域越大，参数变化的趋势越慢
