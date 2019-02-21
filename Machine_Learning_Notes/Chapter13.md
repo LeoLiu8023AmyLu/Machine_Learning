@@ -1,4 +1,24 @@
-# 支持向量机 SVM
+---
+html:
+  embed_local_images: true
+  embed_svg: true
+  offline: false
+  toc: true
+print_background: true
+
+export_on_save:
+  html: true
+
+toc:
+  depth_from: 1
+  depth_to: 6
+  ordered: true
+---
+
+# 支持向量机 SVM {ignore=true}
+
+[TOC]
+
 
 ## 优化目标
 逻辑回归 中 激活函数 $h_\theta(x) = \dfrac{1}{1+e^{-\theta^Tx}}$
@@ -239,7 +259,7 @@ Sigmoid 函数 其中 $z=\theta^Tx$:
     }
     ```
     > 其中 $z=\theta^Tx$
-    > <font color=RoyalBlue font-weight=bold >蓝色</font> 为损失函数，<font color=RoyalBlue font-weight=bold >橙色</font> 为假设的 $Cost_1(z)$ 函数
+    > <font color=RoyalBlue font-weight=bold >蓝色</font> 为损失函数，<font color=Darkorange font-weight=bold >橙色</font> 为假设的 $Cost_1(z)$ 函数
 * 如果 $y=0$ 我们希望 $h_\theta(x) \approx 0$ , 则 $\theta^Tx \ll 0$
     **损失函数为**: $-\log\Bigl(1-\dfrac{1}{1+e^{-\theta^Tx}}\Bigr)$
     ``` vega
@@ -356,7 +376,7 @@ Sigmoid 函数 其中 $z=\theta^Tx$:
     }
     ```
     > 其中 $z=\theta^Tx$
-    > <font color=RoyalBlue font-weight=bold >蓝色</font> 为损失函数，<font color=RoyalBlue font-weight=bold >橙色</font> 为假设的 $Cost_0(z)$ 函数
+    > <font color=RoyalBlue font-weight=bold >蓝色</font> 为损失函数，<font color=Darkorange font-weight=bold >橙色</font> 为假设的 $Cost_0(z)$ 函数
 
 ### 支持向量机 Support vector machine
 
@@ -481,3 +501,5 @@ $\sigma^2$ 为 高斯核 $f_i = \exp(-\dfrac{{\lVert x - l^{(i)} \rVert}^2}{2\si
   建议使用: 使用高斯核函数的支持向量机
 * 如果 $n$ 很小 , $m$ 很大 : ($n=1,...,1000$ , $m=50,000^+$) 
   建议使用: 增加或者创造更多的 **特征** 后，使用 **逻辑回归** 或者 **使用线性核函数的支持向量机** (无核函数的 SVM)
+
+@import "index.md"

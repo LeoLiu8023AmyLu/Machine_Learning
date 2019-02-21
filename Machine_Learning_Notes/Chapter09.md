@@ -1,4 +1,23 @@
-# 神经网络学习
+---
+html:
+  embed_local_images: true
+  embed_svg: true
+  offline: false
+  toc: true
+print_background: true
+
+export_on_save:
+  html: true
+
+toc:
+  depth_from: 1
+  depth_to: 6
+  ordered: true
+---
+
+# 神经网络学习 {ignore=true}
+
+[TOC]
 
 ## 非线性假设
 当特征 $n$ 很多的时候，多项式拟合便不再适用。
@@ -272,4 +291,5 @@ $\dfrac{\partial}{\partial\theta_n} J(\theta) \approx \dfrac{J(\theta_1,\theta_2
    6. 结合 **反向传播** 算法 与 **梯度下降** 或 更高级的优化算法，计算 $J(\Theta)$ 接近最小时,参数 $\Theta$ 的值; 
         > **反向传播** 的方法是为了计算出 偏导数项: $\dfrac{\partial}{\partial \Theta^{(l)}_jk}J(\Theta)$;
         > $J(\Theta)$ 是非凸函数，因此 梯度下降 算法一般可以下降到局部最小值(非全局最优);
-        
+
+@import "index.md"

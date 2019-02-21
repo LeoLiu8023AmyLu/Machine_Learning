@@ -1,4 +1,24 @@
-# logistics 回归 逻辑回归
+---
+html:
+  embed_local_images: true
+  embed_svg: true
+  offline: false
+  toc: true
+print_background: true
+
+export_on_save:
+  html: true
+
+toc:
+  depth_from: 1
+  depth_to: 6
+  ordered: true
+---
+
+# logistics 回归 逻辑回归 {ignore=true}
+
+[TOC]
+
 ## 分类
 分类任务：
 * 邮件: 是否是垃圾邮件
@@ -414,3 +434,5 @@ $\dfrac{\partial}{\partial\theta_2}J(\theta) = 2*(\theta_2-5)$
 每个类别有一个单独的假设函数，且有对应的 **伪训练集**
 
 最终得到的结果是  $\underset{i}{max}\ h_\theta^{(i)}(x)$ 预测值最大的类别便是预测结果
+
+@import "index.md"

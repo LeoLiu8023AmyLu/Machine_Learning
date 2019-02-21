@@ -1,4 +1,24 @@
-# 线性回归回顾
+---
+html:
+  embed_local_images: true
+  embed_svg: true
+  offline: false
+  toc: true
+print_background: true
+
+export_on_save:
+  html: true
+
+toc:
+  depth_from: 1
+  depth_to: 6
+  ordered: true
+---
+
+# 线性回归回顾 {ignore=true}
+
+[TOC]
+
 ## 矩阵与向量
 ### 矩阵
 * **Matrix** 矩阵 ：Rectangular array of numbers 矩形数组 :
@@ -178,6 +198,4 @@ $A^T = \begin{bmatrix}1&3\\2&5\\0&9\end{bmatrix}$
 > 存在关系: $B_{ij} = A_{ji}$
 
 
-上一章 [单变量线性回归](./Chapter02.md)
-下一章 [多变量线性回归](./Chapter05.md)
-[返回目录](./Topic.md)
+@import "index.md"

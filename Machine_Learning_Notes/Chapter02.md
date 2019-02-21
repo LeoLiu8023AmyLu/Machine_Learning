@@ -1,13 +1,33 @@
-# 单变量线性回归
+---
+html:
+  embed_local_images: true
+  embed_svg: true
+  offline: false
+  toc: true
+print_background: true
+
+export_on_save:
+  html: true
+
+toc:
+  depth_from: 1
+  depth_to: 6
+  ordered: true
+---
+
+# 单变量线性回归 {ignore=true}
+
+[TOC]
+
 ## 监督学习模型
 参数说明:  
-| 参数                | 解释                                  | 翻译            |
+|        参数         |                 解释                  |      翻译       |
 | :-----------------: | :-----------------------------------: | :-------------: |
-| m                   | Number of training examples           | 训练的样本数    |
-| x's                 | "input" variable / features           | 输入变量/特征   |
-| y's                 | "output" variable / "target" variable | 输出变量/特征   |
-| (x,y)               | one training example                  | 一个训练样本    |
-| $(x^{(i)},y^{(i)})$ | $i^{th}$ training example             | 第 i 个训练样本 |
+|         $m$         |      Number of training examples      |  训练的样本数   |
+|        $x$'s        |      "input" variable / features      |  输入变量/特征  |
+|        $y$'s        | "output" variable / "target" variable |  输出变量/特征  |
+|      ($x$,$y$)      |         one training example          |  一个训练样本   |
+| $(x^{(i)},y^{(i)})$ |       $i^{th}$ training example       | 第 i 个训练样本 |
 
 ```mermaid
 graph LR;
@@ -34,12 +54,12 @@ D --> E[output Y]
   $$ \underset{\theta_0 \theta_1}{minimize } J(\theta_0,\theta_1)=\dfrac{1}{2m} \displaystyle\sum_{i =1}^{m} (h_{\theta}(x^{(i)})-y^{(i)})^2 $$
 
 ### 单变量线性回归小结
-| 参数 | 说明 | 表达式|
-|:--:|:--:|:--:|
-|Hypothesis|假设函数|$h_{\theta}(x) = \theta_0 + \theta_1 x$|
-|Parameters|参数|$\theta_0,\theta_1$|
-|Cost Function|误差代价函数|$J(\theta_0,\theta_1)=\dfrac{1}{2m} \displaystyle\sum_{i =1}^{m} (h_{\theta}(x^{(i)})-y^{(i)})^2$|
-|Goal|目标|$\underset{\theta_0 \theta_1}{minimize } J(\theta_0,\theta_1)$|
+|     参数      |     说明     |                                              表达式                                               |
+| :-----------: | :----------: | :-----------------------------------------------------------------------------------------------: |
+|  Hypothesis   |   假设函数   |                              $h_{\theta}(x) = \theta_0 + \theta_1 x$                              |
+|  Parameters   |     参数     |                                        $\theta_0,\theta_1$                                        |
+| Cost Function | 误差代价函数 | $J(\theta_0,\theta_1)=\dfrac{1}{2m} \displaystyle\sum_{i =1}^{m} (h_{\theta}(x^{(i)})-y^{(i)})^2$ |
+|     Goal      |     目标     |                  $\underset{\theta_0 \theta_1}{minimize } J(\theta_0,\theta_1)$                   |
 
 * $h_\theta(x)$ for fixed $\theta_0,\theta_1$, this is a function of $x$
 $h_\theta(x)$ 是关于 $x$ 的函数
@@ -130,6 +150,4 @@ $\dfrac{\partial}{\partial\theta_j} J(\theta_0.\theta_1) = \dfrac{\partial}{\par
 "Batch": Each step of gradient descent uses all the training examples.
 > 每一步梯度下降，都遍历整个训练集的样本
 
-上一章 [绪论:初识机器学习](./Chapter01.md)
-下一章 [线性回归回顾](./Chapter03.md)
-[返回目录](./Topic.md)
+@import "index.md"

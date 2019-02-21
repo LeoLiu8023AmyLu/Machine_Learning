@@ -1,4 +1,24 @@
-# 多变量逻辑回归
+---
+html:
+  embed_local_images: true
+  embed_svg: true
+  offline: false
+  toc: true
+print_background: true
+
+export_on_save:
+  html: true
+
+toc:
+  depth_from: 1
+  depth_to: 6
+  ordered: true
+---
+
+# 多变量逻辑回归  {ignore=true}
+
+[TOC]
+
 ## 引言 
 ### Multiple features(variables) 多特征
 | Size($feet^2$) | Number of bedrooms | Number of floors | Age of home(years) | Price($1000) |
@@ -404,3 +424,5 @@ $m$ training examples, $n$ features. $m$ 个训练样本 $n$ 个特征
 E.g. $x_1$ = size in $feet^2$ , $x_2$ = size in $m^2$ (第二个是多余的)
 2. Too many features 过多的特征 (e.g. $m \leqslant n$).
     - Delete some features,or use regularization.删除一些特征，或者使用 **正则化**。
+
+@import "index.md"

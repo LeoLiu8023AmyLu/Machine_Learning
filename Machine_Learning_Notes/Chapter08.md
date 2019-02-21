@@ -1,4 +1,24 @@
-# 正则化
+---
+html:
+  embed_local_images: true
+  embed_svg: true
+  offline: false
+  toc: true
+print_background: true
+
+export_on_save:
+  html: true
+
+toc:
+  depth_from: 1
+  depth_to: 6
+  ordered: true
+---
+
+# 正则化 {ignore=true}
+
+[TOC]
+
 ## 过拟合问题
 ### 拟合中出现的问题
 举例：房屋价格 线性回归
@@ -213,3 +233,5 @@ Repeat{
 }
 > 其中 $\theta_0$ 是需要区别对待的
 > 其中 $1-\alpha\dfrac{\lambda}{m} < 1$
+
+@import "index.md"

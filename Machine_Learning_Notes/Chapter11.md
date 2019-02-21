@@ -1,4 +1,25 @@
-# 应用机器学习的建议
+---
+html:
+  embed_local_images: true
+  embed_svg: true
+  offline: false
+  toc: true
+print_background: true
+
+export_on_save:
+  html: true
+
+toc:
+  depth_from: 1
+  depth_to: 6
+  ordered: true
+---
+
+# 应用机器学习的建议 {ignore=true}
+
+[TOC]
+
+## 引言
 
 优化模型性能的一些途径(并非全部有效，需要根据项目特点进行选择):
 * 获取更多的训练数据 (有时候无效)
@@ -136,3 +157,5 @@
 
 * 小型的神经网络 容易 欠拟合
 * 大型的神经网络 容易 过拟合 ( 巧用正则化 $\lambda$ )
+
+@import "index.md"

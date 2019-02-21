@@ -1,4 +1,24 @@
-# 绪论:初识机器学习
+---
+html:
+  embed_local_images: true
+  embed_svg: true
+  offline: false
+  toc: true
+print_background: true
+
+export_on_save:
+  html: true
+
+toc:
+  depth_from: 1
+  depth_to: 6
+  ordered: true
+---
+
+# 绪论:初识机器学习 {ignore=true}
+
+[TOC]
+
 ## 机器学习应用领域
 举例：
 1. Database mining 数据挖掘 (网页点击量，医疗记录，生物)
@@ -58,7 +78,4 @@
 > svd 奇异值分解
 
 
-## 章节跳转
-
-| 上一章 无 | [返回目录](./Topic.md) | 下一章 [单变量线性回归](./Chapter02.md) |
-| :-------: | :--------------------: | :-------------------------------------: |
+@import "index.md"

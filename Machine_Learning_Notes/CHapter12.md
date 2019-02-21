@@ -1,4 +1,23 @@
-# 机器学习系统设计
+---
+html:
+  embed_local_images: true
+  embed_svg: true
+  offline: false
+  toc: true
+print_background: true
+
+export_on_save:
+  html: true
+
+toc:
+  depth_from: 1
+  depth_to: 6
+  ordered: true
+---
+
+# 机器学习系统设计 {ignore=true}
+
+[TOC]
 
 ## 确定执行的优先级
 
@@ -69,3 +88,5 @@
 数据量的增加会提高模型的准确性
 > 有足够的特征信息用于预测 (用人的思维来考虑是否可以预测)
 > 有大量的训练数据 ($J_{train}(\theta) \approx J_{test}(\theta)$ , 同时 $J_{test}(\theta)$ 会比较小，模型相对低方差 )
+
+@import "index.md"
