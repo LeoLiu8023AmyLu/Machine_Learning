@@ -327,4 +327,26 @@ $$\begin{bmatrix}1\\2\end{bmatrix} \odot \begin{bmatrix}3\\4\end{bmatrix} = \beg
 
 **四个基本方程：**
 
-1. **BP1** 输出层误差的方程 $\delta^L$，每个元素定义如下: $\delta^L_j = \dfrac{\partial C}{\partial a^L_j} \sigma'(z^L_j)$ 
+1. **BP1** 输出层误差的方程 $\delta^L$，每个元素定义如下: $\delta^L_j = \dfrac{\partial C}{\partial a^L_j} \sigma'(z^L_j)$
+    右式第一项：$\dfrac{\partial C}{\partial a^L_j}$ 表示代价随着 $j^{th}$ 输出激活值的变化而变化的速度
+    右式第二项：$\sigma'(z^L_j)$ 刻画了在 $z^L_j$ 处激活函数 $\sigma$ 变化的速度
+    矩阵形式为：$\delta^L = \nabla_aC \cdot \sigma'(z^L)$ 
+
+2. **BP2** 使⽤下⼀层的误差 $\delta^{l+1}$ 来表⽰当前层的误差 $\delta^l$： $\delta^l = ((w^{l+1})^T \delta^{l+1}) \cdot \sigma '(z^l)$
+    沿着⽹络 **反向** 移动误差
+
+3. **BP3** 代价函数关于⽹络中任意偏置的改变率： $\dfrac{ \partial C}{ \partial b^l_j} = \delta ^l_j$ 
+    简写: $\dfrac{ \partial C}{ \partial b} = \delta$
+
+4. **BP4** 代价函数关于任何⼀个权重的改变率：$\dfrac{\partial C}{ \partial w^l_{jk}} = a^{l-1}_k \delta^l_j$
+    简写: $\dfrac{\partial C}{ \partial w} = a_{in} \delta_{out}$
+    其中 $a_in$ 是输⼊给权重 $w$ 的神经元的激活值，$\delta_{out}$ 是输出⾃权重 $w$ 的神经元的误差。
+    如果 $a_{in} \approx 0$，梯度 $\dfrac{\partial C}{ \partial w}$ 也会趋向很⼩。称这种现象为 **权重缓慢学习**
+
+### 反向传播算法
+1. 输入 $x$: 为输入层设置对应的激活值 $a^l$
+2. 前向传播: 对每个 $l=2,3,...,L$ 计算相应的 $z^l = w^l a^{l-1}+b^l$ 和 $a^l = \sigma(z^l)$
+3. 输出层误差$\delta^L$ : 计算向量 $\delta^L = \nabla_a C \cdot \sigma'(z^L)$
+4. 反向误差传播：对每个 $l=L-1,L-2,...,2$，计算 $\delta^l = ((w^{l+1})^T \delta^{l+1}) \cdot \sigma'(z^l)$
+5. 输出：代价函数的梯度由 $\dfrac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \sigma^l_j$ 和 $\dfrac{\partial C}{\partial b^l_j} = \delta^l_j$
+
