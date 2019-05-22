@@ -59,7 +59,42 @@ $\Sigma = \dfrac{1}{m} \sum^n_{i=1}(x^{(i)})(x^{(i)})^T$
 ## 主成分数量选择
 关于选择 $k$ PCA 算法中主成分的参数数字。
 
-算法需要求得的误差：$\dfrac{1}{m} \sum^m_{i=1} \Vert x^{(i)} - x^{(i)}_{approx} \Vert^2$
+算法需要求得的误差：$\dfrac{1}{m} \sum^m_{i=1} \Vert x^{(i)} - x^{(i)}_{approx} \Vert^2$ 
 
+选择 $k$ 的公式还可以表示为：
+* 平均二次方误差：$\dfrac{1}{m} \sum^m_{i=1} \Vert x^{(i)} - x^{(i)}_{approx} \Vert^2$
+* 总方差： $\dfrac{1}{m}\sum^m_{i=1} \Vert x^{(i)}\Vert ^2$
+
+$\dfrac{\dfrac{1}{m} \sum^m_{i=1} \Vert x^{(i)} - x^{(i)}_{approx} \Vert^2}{\dfrac{1}{m}\sum^m_{i=1} \Vert x^{(i)}\Vert ^2} \leqslant 0.01$ $(1\%)$
+
+换句话说 $99\%$ 的方差被保留
+
+### 算法
+1. 初始化 $k=1$
+2. 计算: 
+   $U_{reduce},$
+   $z^{(1)},z^{(2)},...,z^{(m)},$
+   $x^{(1)}_{approx},,x^{(2)}_{approx},...,x^{(m)}_{approx}$
+3. 检查
+$\dfrac{\dfrac{1}{m} \sum^m_{i=1} \Vert x^{(i)} - x^{(i)}_{approx} \Vert^2}{\dfrac{1}{m}\sum^m_{i=1} \Vert x^{(i)}\Vert ^2} \leqslant 0.01$
+如果 满足则得到 $k$ 的值
+不满足 则 $k=k+1$
+
+利用 svd 分解奇异矩阵 $[U,S,V] = svd(Sigma)$
+$k$ 从 1 递增，取第一个满足 $\dfrac{\sum^k_{i=1}S_{ii}}{\sum^m_{i=1}S_{ii}}\geqslant 0.99$ 的 $k$ 值
+
+
+## 压缩重现
+
+原始数据重构只能得到近似解，不能完全还原(类似量化)
+
+## 应用 PCA 的建议
+
+PCA 算法的优势：
+* 减少内存，硬盘的使用
+* 加速学习算法
+
+PCA 不是解决过拟合的好办法，更推荐使用正则化；
+PCA 不要直接使用，不要忽略原始数据；
 
 @import "index.md"
